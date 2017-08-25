@@ -2,12 +2,12 @@ FROM ubuntu:latest
 
 RUN apt update && apt install -y sudo 
 
-RUN useradd -g video --create-home --shell /bin/bash warrierr && \
-		echo "warrierr ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/warrierr && \
-		chmod 0400 /etc/sudoers.d/warrierr
+RUN useradd -g video --create-home --shell /bin/bash rishabh && \
+		echo "rishabh ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/rishabh && \
+		chmod 0400 /etc/sudoers.d/rishabh
 
-USER warrierr
-WORKDIR /home/warrierr
+USER rishabh
+WORKDIR /home/rishabh
 
 RUN sudo apt update && sudo apt install -y apt-utils tmux vim lsb-release
 
