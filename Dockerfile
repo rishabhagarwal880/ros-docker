@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM jaguar243/ros-kinetic-docker-mac-host:latest
 
 RUN apt update && apt install -y sudo 
 
@@ -18,3 +18,6 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
 		echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 
 RUN sudo apt update && sudo apt install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
+
+RUN sudo sh -c sudo apt-get install -y ros-kinetic-move-base-* \
+				       ros-kietic-rosserial 
