@@ -1,4 +1,4 @@
-FROM jaguar243/ros-kinetic-docker-mac-host:latest
+FROM ubuntu:latest
 
 RUN apt update && apt install -y sudo 
 
