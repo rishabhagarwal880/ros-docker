@@ -19,5 +19,31 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
 
 RUN sudo apt update && sudo apt install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
 
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN sudo apt update && \
+                sudo apt install -y liburdfdom-tools \
+
+                        evince \
+
+                        kmod \
+
+                        iproute
+
+# install the nvidia driver
+RUN sudo apt update && \
+                sudo apt install -y mesa-utils binutils
+ADD NVIDIA-DRIVER.run /tmp/NVIDIA-DRIVER.run
+RUN sudo sh /tmp/NVIDIA-DRIVER.run -a -N --ui=none --no-kernel-module
+RUN sudo rm /tmp/NVIDIA-DRIVER.run
+
+RUN sudo rosdep init
+
+RUN rosdep update
+
+ADD localConfig /home/warrierr/localConfig
+ENTRYPOINT "./localConfig" && /bin/bash
+
+
 RUN sudo apt-get install -y ros-kinetic-move-base \
 		            ros-kinetic-rosserial 
