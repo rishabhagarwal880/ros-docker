@@ -41,8 +41,8 @@ RUN sudo rosdep init
 
 RUN rosdep update
 
-ADD localConfig /home/warrierr/localConfig
-ENTRYPOINT "./localConfig" && /bin/bash
+#ADD localConfig /home/warrierr/localConfig
+#ENTRYPOINT "./localConfig" && /bin/bash
 
 
 RUN sudo apt-get install -y ros-kinetic-move-base \
